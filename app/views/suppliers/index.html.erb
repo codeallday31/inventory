@@ -12,6 +12,10 @@
   </thead>
 
   <tbody>
+   <form action="suppliers" method="GET">
+     <input type="text" name="search">
+     <button type="submit">Search</button>
+   </form>
     <div class="text-right pb-3">
       <%= link_to 'New Supplier', new_supplier_path, class:'btn btn-sm btn-outline-dark', role:'button' %>
     </div>

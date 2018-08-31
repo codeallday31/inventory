@@ -4,7 +4,12 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
   def index
-    @suppliers = Supplier.all
+    params_index = params.permit(:search)
+    if params_index[:search]
+      @suppliers = Supplier.where("company like ? OR address like ?",  "%#{params_index[:search]}%","%#{params_index[:search]}%")
+    else
+      @suppliers = Supplier.all
+    end
   end
 
   # GET /suppliers/1
@@ -25,7 +30,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers.json
   def create
     @supplier = Supplier.new(supplier_params)
-
+     #byebug
     respond_to do |format|
       if @supplier.save
         format.html { redirect_to suppliers_path, notice: 'Supplier was successfully created.' }
