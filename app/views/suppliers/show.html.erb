@@ -19,8 +19,24 @@
 </p>
 
 <p>
-	<strong>Products</strong>	
-	<%= @supplier.product.name %> 
+	<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Products</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @supplier.product.each do |product| %>
+       <tr>
+         <td> <%= product.name %></td>
+         <td> <%= "₱" +" "+product.price.to_s %></td>
+         <td> <%= product.quantity %></td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
 </p>
 
 <%= link_to 'Edit', edit_supplier_path(@supplier) %> |

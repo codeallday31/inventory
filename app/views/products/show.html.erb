@@ -16,7 +16,7 @@
 
 <p>
   <strong>Supplier:</strong>
-  <%= @product.supplier_id %>
+  <%= @product.supplier.company %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

@@ -1,29 +1,28 @@
 <%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, class:'form-control', placeholder:'Input item name' %>
+    <%= form.text_field :name, class:"form-control", placeholder:'Input item name' %>
+    
+          <span class="text-danger">
+            <%= show_errors(product, :name) %>
+          </span>
+     
   </div>
 
   <div class="form-group">
     <%= form.label :price %>
     <%= form.text_field :price, class:'form-control', placeholder:'Input item price'%>
+       <span class="text-danger">
+            <%= show_errors(product, :price) %>
+          </span>
   </div>
-
+  
   <div class="form-group">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, class:'form-control', placeholder:'Input item quantity' %>
+    <%= form.number_field :quantity, class:"form-control", placeholder:'Input item quantity' %>
+      <span class="text-danger">
+            <%= show_errors(product, :quantity) %>
+          </span>
   </div>
 
   <div class="form-group">
